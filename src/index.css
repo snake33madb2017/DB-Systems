@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+:root {
+  /* Light mode default: Papel Técnico + Grafito + Azul Petróleo */
+  --bg-page: #fafaf9;
+  --bg-surface: #ffffff;
+  --bg-subtle: #f3f4f2;
+  --bg-active: #eef3f7;
+  --bg-footer: #f4f4f1;
+  --border-line: #e4e4e7;
+  --border-strong: #c8cdd3;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+  --accent-bg: #0f3d5e;
+  --accent-bg-hover: #0a2c45;
+  --accent-fg: #ffffff;
+  --accent-ink: #0f3d5e;
+  --grid-line: rgba(15, 61, 94, 0.055);
+  --scroll-track: #f3f4f2;
+  --scroll-thumb: #cbd5e1;
+  --scroll-thumb-hover: #94a3b8;
+  color-scheme: light;
+}
+
+:root.dark {
+  /* Dark mode alternative: Grafito Profundo + Acero Petróleo */
+  --bg-page: #09090b;
+  --bg-surface: #0d0d10;
+  --bg-subtle: #111115;
+  --bg-active: #121a22;
+  --bg-footer: #070709;
+  --border-line: #27272a;
+  --border-strong: #3f3f46;
+  --text-primary: #fafafa;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --accent-bg: #1e5b85;
+  --accent-bg-hover: #266c9c;
+  --accent-fg: #ffffff;
+  --accent-ink: #7eb6db;
+  --grid-line: rgba(255, 255, 255, 0.034);
+  --scroll-track: #09090b;
+  --scroll-thumb: #27272a;
+  --scroll-thumb-hover: #3f3f46;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  --color-page: var(--bg-page);
+  --color-surface: var(--bg-surface);
+  --color-subtle: var(--bg-subtle);
+  --color-active: var(--bg-active);
+  --color-footer: var(--bg-footer);
+  --color-line: var(--border-line);
+  --color-line-strong: var(--border-strong);
+  --color-ink: var(--text-primary);
+  --color-ink-secondary: var(--text-secondary);
+  --color-ink-muted: var(--text-muted);
+  --color-accent: var(--accent-bg);
+  --color-accent-hover: var(--accent-bg-hover);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-ink: var(--accent-ink);
+}
+
+@layer base {
+  html {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    scroll-padding-top: 4.5rem;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: var(--bg-page);
+    color: var(--text-primary);
+    overflow-x: hidden;
+  }
+}
+
+/* Subtle architectural blueprint hairline grid */
+.bg-architectural-grid {
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Precision scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scroll-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scroll-thumb-hover);
+}
