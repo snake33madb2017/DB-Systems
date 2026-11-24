@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ArrowUpRight, Download, Menu, Moon, Sun, X } from 'lucide-react';
 import type { Locale, SiteContent } from '../data/content';
+import { useScrollSpy, type SectionId } from '../hooks/useScrollSpy';
 import { BrandMark } from './BrandMark';
 
 export type Theme = 'light' | 'dark';
@@ -27,12 +28,13 @@ export function Navbar({
   onInstallPwa,
 }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { progress, activeSection } = useScrollSpy();
 
-  const navLinks = [
-    { href: '#capabilities', label: content.nav.capabilities },
-    { href: '#industries', label: content.nav.industries },
-    { href: '#plans', label: content.nav.plans },
-    { href: '#process', label: content.nav.process },
+  const navLinks: { id: Exclude<SectionId, null>; href: string; label: string }[] = [
+    { id: 'capabilities', href: '#capabilities', label: content.nav.capabilities },
+    { id: 'industries', href: '#industries', label: content.nav.industries },
+    { id: 'plans', href: '#plans', label: content.nav.plans },
+    { id: 'process', href: '#process', label: content.nav.process },
   ];
 
   const themeToggleLabel =
@@ -49,9 +51,9 @@ export function Navbar({
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-8">
         <a
           href="#top"
-          className="flex items-center gap-3 focus:outline-none focus-visible:ring-1 focus-visible:ring-accent"
+          className="group flex items-center gap-3 focus:outline-none focus-visible:ring-1 focus-visible:ring-accent"
         >
-          <BrandMark className="h-7 w-7 shrink-0" />
+          <BrandMark className="h-7 w-7 shrink-0 transition-transform duration-300 group-hover:scale-[1.04]" />
           <div className="flex flex-col leading-none">
             <span className="font-mono text-xs font-semibold tracking-[0.18em] text-ink">
               {content.brand.name}
@@ -63,15 +65,26 @@ export function Navbar({
         </a>
 
         <nav className="hidden items-center gap-8 md:flex" aria-label={content.nav.menuLabel}>
-          {navLinks.map((item) => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="text-[13px] font-medium text-ink-secondary transition-colors hover:text-ink"
-            >
-              {item.label}
-            </a>
-          ))}
+          {navLinks.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <a
+                key={item.href}
+                href={item.href}
+                className={`relative py-1 text-[13px] font-medium transition-colors ${
+                  isActive ? 'text-ink' : 'text-ink-secondary hover:text-ink'
+                }`}
+              >
+                {item.label}
+                <span
+                  className={`absolute inset-x-0 -bottom-0.5 h-[2px] bg-accent transition-transform duration-300 origin-left ${
+                    isActive ? 'scale-x-100' : 'scale-x-0'
+                  }`}
+                  aria-hidden="true"
+                />
+              </a>
+            );
+          })}
         </nav>
 
         <div className="flex items-center gap-2.5">
@@ -137,10 +150,13 @@ export function Navbar({
           <button
             type="button"
             onClick={onOpenModal}
-            className="hidden h-8 items-center gap-1.5 border border-accent bg-accent px-3.5 text-xs font-medium text-accent-fg transition-colors hover:bg-accent-hover sm:inline-flex cursor-pointer"
+            className="group hidden h-8 items-center gap-1.5 border border-accent bg-accent px-3.5 text-xs font-medium text-accent-fg transition-colors hover:bg-accent-hover sm:inline-flex cursor-pointer"
           >
             <span>{content.nav.cta}</span>
-            <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={1.5} />
+            <ArrowUpRight
+              className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              strokeWidth={1.5}
+            />
           </button>
 
           <button
@@ -159,16 +175,28 @@ export function Navbar({
         </div>
       </div>
 
+      {/* Reading progress hairline */}
+      <div className="h-[2px] w-full bg-transparent" aria-hidden="true">
+        <div
+          className="h-full bg-accent transition-[width] duration-150 ease-out"
+          style={{ width: `${progress}%` }}
+        />
+      </div>
+
       {/* Mobile Navigation Drawer */}
       {mobileOpen && (
-        <div className="border-t border-line bg-page md:hidden">
+        <div className="animate-panel-enter border-t border-line bg-page md:hidden">
           <div className="mx-auto flex max-w-7xl flex-col divide-y divide-line px-5">
             {navLinks.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={() => setMobileOpen(false)}
-                className="py-3.5 text-sm font-medium text-ink-secondary transition-colors hover:text-ink"
+                className={`py-3.5 text-sm font-medium transition-colors ${
+                  activeSection === item.id
+                    ? 'text-accent-ink'
+                    : 'text-ink-secondary hover:text-ink'
+                }`}
               >
                 {item.label}
               </a>

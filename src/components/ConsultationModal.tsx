@@ -115,7 +115,7 @@ export function ConsultationModal({
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="max-h-[92vh] w-full max-w-2xl overflow-y-auto border border-line bg-surface">
+      <div className="animate-modal-enter max-h-[92vh] w-full max-w-2xl overflow-y-auto border border-line bg-surface">
         {/* Modal Top Bar */}
         <div className="flex items-start justify-between border-b border-line px-6 py-5 sm:px-8">
           <div>
