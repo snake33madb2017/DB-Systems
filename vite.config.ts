@@ -26,7 +26,8 @@ function pwaPrecacheInjector(): Plugin {
             walk(full);
           } else {
             const rel = '/' + path.relative(distDir, full).replace(/\\/g, '/');
-            if (rel !== '/sw.js' && !rel.endsWith('.map')) {
+            const isDeferredImage = rel.startsWith('/images/') && rel !== '/images/hero-studio.jpg';
+            if (rel !== '/sw.js' && !rel.endsWith('.map') && !isDeferredImage) {
               if (!assets.includes(rel)) assets.push(rel);
             }
           }

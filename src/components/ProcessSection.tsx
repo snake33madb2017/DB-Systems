@@ -72,30 +72,44 @@ export function ProcessSection({ content, onOpenModal }: ProcessSectionProps) {
           ))}
         </div>
 
-        {/* Executive CTA Band */}
-        <div className="mt-16 border border-line bg-active p-7 sm:p-10 lg:p-12">
-          <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
-            <div className="max-w-2xl">
+        {/* Executive CTA Band with Editorial Architecture Still-Life */}
+        <div className="mt-16 grid grid-cols-1 border border-line bg-active lg:grid-cols-12">
+          <div className="flex flex-col justify-between p-7 sm:p-10 lg:col-span-7 lg:p-12">
+            <div>
               <div className="font-mono text-[11px] font-medium tracking-[0.14em] text-accent-ink">
                 {ctaBand.code}
               </div>
               <h3 className="mt-3 text-2xl font-semibold tracking-[-0.02em] text-ink sm:text-3xl">
                 {ctaBand.title}
               </h3>
-              <p className="mt-3 text-sm leading-relaxed text-ink-secondary">
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-ink-secondary">
                 {ctaBand.description}
               </p>
             </div>
 
-            <button
-              type="button"
-              onClick={onOpenModal}
-              className="inline-flex h-11 shrink-0 items-center justify-center gap-2.5 border border-accent bg-accent px-6 text-sm font-medium text-accent-fg transition-colors hover:bg-accent-hover cursor-pointer"
-            >
-              <span>{ctaBand.button}</span>
-              <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
-            </button>
+            <div className="mt-8">
+              <button
+                type="button"
+                onClick={onOpenModal}
+                className="inline-flex h-11 shrink-0 items-center justify-center gap-2.5 border border-accent bg-accent px-6 text-sm font-medium text-accent-fg transition-colors hover:bg-accent-hover cursor-pointer"
+              >
+                <span>{ctaBand.button}</span>
+                <ArrowUpRight className="h-4 w-4" strokeWidth={1.5} />
+              </button>
+            </div>
           </div>
+
+          <figure className="border-t border-line bg-subtle lg:col-span-5 lg:border-l lg:border-t-0">
+            <div className="h-full min-h-[220px] w-full overflow-hidden">
+              <img
+                src="/images/process-workshop.jpg"
+                alt={ctaBand.imageAlt}
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover"
+              />
+            </div>
+          </figure>
         </div>
       </div>
     </section>

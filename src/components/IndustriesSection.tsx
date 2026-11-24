@@ -133,6 +133,24 @@ export function IndustriesSection({
                 </div>
               </div>
 
+              {/* Sector Editorial Photograph */}
+              <figure className="mt-6 border border-line bg-subtle">
+                <div className="aspect-[16/8] w-full overflow-hidden sm:aspect-[21/9]">
+                  <img
+                    key={activeIndustry.id}
+                    src={activeIndustry.image}
+                    alt={activeIndustry.imageAlt}
+                    loading="lazy"
+                    decoding="async"
+                    className="h-full w-full object-cover"
+                  />
+                </div>
+                <figcaption className="flex items-center justify-between border-t border-line bg-page px-3.5 py-2 font-mono text-[10px] tracking-[0.12em] text-ink-muted">
+                  <span>{activeIndustry.code} // {activeIndustry.shortName.toUpperCase()}</span>
+                  <span className="hidden sm:inline">{activeIndustry.markets}</span>
+                </figcaption>
+              </figure>
+
               {/* Problem & Solution Two-Column Spec */}
               <div className="mt-7 grid grid-cols-1 gap-6 border-b border-line pb-7 md:grid-cols-2">
                 <div>

@@ -45,6 +45,8 @@ export interface IndustryItem {
   shortName: string;
   title: string;
   markets: string;
+  image: string;
+  imageAlt: string;
   problemLabel: string;
   problem: string;
   solutionLabel: string;
@@ -107,6 +109,8 @@ export interface SiteContent {
     primaryCta: string;
     secondaryCta: string;
     architectureNote: string;
+    imageAlt: string;
+    imageCaption: string;
     metrics: MetricItem[];
   };
   capabilities: {
@@ -114,6 +118,8 @@ export interface SiteContent {
     sectionLabel: string;
     title: string;
     intro: string;
+    imageAlt: string;
+    imageCaption: string;
     agnosticBanner: {
       code: string;
       title: string;
@@ -162,6 +168,7 @@ export interface SiteContent {
     title: string;
     description: string;
     button: string;
+    imageAlt: string;
   };
   footer: {
     summary: string;
@@ -247,6 +254,8 @@ export const CONTENT: Record<Locale, SiteContent> = {
       primaryCta: 'Agendar Reunión',
       secondaryCta: 'Explorar Capacidades',
       architectureNote: 'INTERLOCUCIÓN DIRECTA CON DIRECCIÓN Y CTOs · PRODUCCIÓN VERIFICADA',
+      imageAlt: 'Escritorio arquitectónico del estudio de ingeniería DB Systems con luz natural y cuaderno técnico',
+      imageCaption: 'DISEÑO DE PRODUCTO & INGENIERÍA',
       metrics: [
         {
           value: '15+',
@@ -276,6 +285,8 @@ export const CONTENT: Record<Locale, SiteContent> = {
       title: 'Criterio de ingeniería probado en entornos críticos y comerciales',
       intro:
         'Nuestra firma consolida más de quince años de dirección técnica, arquitectura cloud y desarrollo en producción para entidades gubernamentales, banca, industria y pymes en expansión. No dependemos de plantillas cerradas: abordamos el ciclo completo del software desde la toma de requisitos hasta la operación continua.',
+      imageAlt: 'Espacio arquitectónico de ingeniería de software con estructura de acero, cristal y puestos de trabajo ordenados',
+      imageCaption: 'ARQUITECTURA CLOUD · MULTI-PLATAFORMA · PRODUCCIÓN CONTINUA',
       agnosticBanner: {
         code: 'DOCTRINA // MULTI-PLATAFORMA & MULTI-LENGUAJE',
         title: 'Agnósticos al stack. Orientados al resultado operativo.',
@@ -396,6 +407,8 @@ export const CONTENT: Record<Locale, SiteContent> = {
           shortName: 'Hostelería y Restauración',
           title: 'Hostelería y Restauración',
           markets: 'ESPAÑA · EE. UU. · GRUPOS Y FRANQUICIAS',
+          image: '/images/sector-hospitality.jpg',
+          imageAlt: 'Barra de restaurante contemporáneo en madera y piedra natural con terminal TPV discreto',
           problemLabel: 'DIAGNÓSTICO OPERATIVO',
           problem:
             'Dependencia de agregadores de delivery con comisiones del 25-35%, ausencias (no-shows) sin penalización ni confirmación, descontrol de mermas y desconexión entre sala, cocina, TPV y compras en locales propios o franquiciados.',
@@ -465,6 +478,8 @@ export const CONTENT: Record<Locale, SiteContent> = {
           shortName: 'Clínicas y Salud Privada',
           title: 'Clínicas y Salud Privada',
           markets: 'ESPAÑA (RGPD) · EE. UU. (HIPAA-READY)',
+          image: '/images/sector-healthcare.jpg',
+          imageAlt: 'Recepción minimalista y luminosa de clínica médica privada en piedra natural y roble',
           problemLabel: 'DIAGNÓSTICO OPERATIVO',
           problem:
             'Saturación telefónica en recepción, huecos de agenda por inasistencias no avisadas, formularios en papel que duplican la carga administrativa y baja trazabilidad en el seguimiento post-consulta.',
@@ -487,6 +502,8 @@ export const CONTENT: Record<Locale, SiteContent> = {
           shortName: 'Despachos Legales y Consultorías',
           title: 'Despachos Legales y Consultorías',
           markets: 'ESPAÑA · EE. UU. · FIRMAS B2B',
+          image: '/images/sector-legal.jpg',
+          imageAlt: 'Sala de juntas sobria de despacho legal y consultoría B2B con mesa de nogal y luz natural',
           problemLabel: 'DIAGNÓSTICO OPERATIVO',
           problem:
             'Horas facturables perdidas filtrando consultas sin encaje, redacción manual repetitiva de contratos o escritos estándar y seguimiento fragmentado de expedientes en hilos de correo.',
@@ -509,6 +526,8 @@ export const CONTENT: Record<Locale, SiteContent> = {
           shortName: 'Inmobiliarias y Propiedades',
           title: 'Inmobiliarias y Gestión de Propiedades',
           markets: 'ESPAÑA · EE. UU. · PROPERTY MANAGEMENT',
+          image: '/images/sector-realestate.jpg',
+          imageAlt: 'Fachada y vestíbulo acristalado de edificio residencial y corporativo contemporáneo',
           problemLabel: 'DIAGNÓSTICO OPERATIVO',
           problem:
             'Gestión manual de cobros y liquidaciones a propietarios, incidencias de mantenimiento dispersas por WhatsApp y desactualización de cartera entre portales inmobiliarios y CRM.',
@@ -531,6 +550,8 @@ export const CONTENT: Record<Locale, SiteContent> = {
           shortName: 'E-commerce, Retail y Logística',
           title: 'E-commerce, Retail y Logística',
           markets: 'ESPAÑA · UE · EE. UU. · OMNICANAL',
+          image: '/images/sector-ecommerce.jpg',
+          imageAlt: 'Almacén logístico limpio y organizado de operaciones retail y comercio electrónico',
           problemLabel: 'DIAGNÓSTICO OPERATIVO',
           problem:
             'Roturas de stock o sobreventa entre tiendas físicas, tienda online y marketplaces; procesamiento manual de etiquetas y pedidos B2B gestionados por teléfono o PDF.',
@@ -553,6 +574,8 @@ export const CONTENT: Record<Locale, SiteContent> = {
           shortName: 'Servicios Técnicos y B2B',
           title: 'Servicios Técnicos y Empresas B2B',
           markets: 'ESPAÑA · EE. UU. · OPERACIONES EN CAMPO',
+          image: '/images/sector-fieldservices.jpg',
+          imageAlt: 'Ingeniero de servicios técnicos en campo revisando instalaciones modernas con tablet robusta',
           problemLabel: 'DIAGNÓSTICO OPERATIVO',
           problem:
             'Partes de trabajo en papel, demoras de días en emitir presupuestos o facturas tras finalizar un servicio y desconexión entre técnicos en ruta y administración.',
@@ -687,6 +710,7 @@ export const CONTENT: Record<Locale, SiteContent> = {
       description:
         'Sesión directa de 30 minutos con perfil técnico-estratégico para analizar su operativa, definir el alcance más eficiente y proponer el modelo de contratación adecuado.',
       button: 'Agendar Reunión',
+      imageAlt: 'Mesa de trabajo técnico con papel cuadriculado, regla de acero, libreta y portátil cerrado',
     },
     footer: {
       summary:
@@ -763,6 +787,8 @@ export const CONTENT: Record<Locale, SiteContent> = {
       primaryCta: 'Schedule Call',
       secondaryCta: 'Explore Capabilities',
       architectureNote: 'DIRECT C-LEVEL & CTO INTERLOCUTION · PRODUCTION-PROVEN DELIVERY',
+      imageAlt: 'Minimalist architectural software engineering studio desk in natural daylight with technical grid notebook',
+      imageCaption: 'PRODUCT DESIGN & ENGINEERING',
       metrics: [
         {
           value: '15+',
@@ -792,6 +818,8 @@ export const CONTENT: Record<Locale, SiteContent> = {
       title: 'Engineering discipline forged in mission-critical and commercial environments',
       intro:
         'Our firm builds on more than fifteen years of technical leadership, cloud architecture, and production software delivery across government entities, financial institutions, enterprise operators, and scaling SMEs. We own the full lifecycle—from technical scoping to stable production operations.',
+      imageAlt: 'Modern glass and steel software engineering workspace in natural daylight',
+      imageCaption: 'CLOUD ARCHITECTURE · CROSS-PLATFORM · CONTINUOUS OPERATIONS',
       agnosticBanner: {
         code: 'DOCTRINE // CROSS-PLATFORM & MULTI-LANGUAGE',
         title: 'Stack-agnostic by principle. Engineered for operational fit.',
@@ -912,6 +940,8 @@ export const CONTENT: Record<Locale, SiteContent> = {
           shortName: 'Hospitality & Foodservice',
           title: 'Hospitality & Foodservice',
           markets: 'SPAIN · UNITED STATES · GROUPS & FRANCHISES',
+          image: '/images/sector-hospitality.jpg',
+          imageAlt: 'Contemporary restaurant bar in natural oak and honed stone with minimal POS terminal',
           problemLabel: 'OPERATIONAL DIAGNOSIS',
           problem:
             'Margin erosion from 25–35% third-party delivery commissions, unmanaged table no-shows, unmonitored food waste, and disconnected front-of-house, kitchen, POS, and supplier workflows across locations.',
@@ -981,6 +1011,8 @@ export const CONTENT: Record<Locale, SiteContent> = {
           shortName: 'Healthcare & Clinics',
           title: 'Healthcare & Private Clinics',
           markets: 'SPAIN (GDPR) · UNITED STATES (HIPAA-READY)',
+          image: '/images/sector-healthcare.jpg',
+          imageAlt: 'Minimalist sunlit reception desk at a modern private medical clinic in limestone and oak',
           problemLabel: 'OPERATIONAL DIAGNOSIS',
           problem:
             'Front-desk phone bottlenecks, costly appointment no-shows, paper intake forms duplicating staff effort, and fragmented post-visit patient follow-up.',
@@ -1003,6 +1035,8 @@ export const CONTENT: Record<Locale, SiteContent> = {
           shortName: 'Law Firms & LegalTech',
           title: 'Law Firms & Consultancies',
           markets: 'SPAIN · UNITED STATES · B2B PRACTICES',
+          image: '/images/sector-legal.jpg',
+          imageAlt: 'Quiet executive boardroom in a modern law firm and B2B consultancy with walnut conference table',
           problemLabel: 'OPERATIONAL DIAGNOSIS',
           problem:
             'Billable partner hours lost qualifying mismatched inquiries, repetitive manual drafting of standard agreements, and case updates buried across email threads.',
@@ -1025,6 +1059,8 @@ export const CONTENT: Record<Locale, SiteContent> = {
           shortName: 'Real Estate & Property Mgmt',
           title: 'Real Estate & Property Management',
           markets: 'SPAIN · UNITED STATES · PORTFOLIOS',
+          image: '/images/sector-realestate.jpg',
+          imageAlt: 'Contemporary limestone and glass residential and commercial building entrance',
           problemLabel: 'OPERATIONAL DIAGNOSIS',
           problem:
             'Manual rent collection and owner payout reconciliations, maintenance requests scattered across chat apps, and out-of-sync listings across portals and internal CRMs.',
@@ -1047,6 +1083,8 @@ export const CONTENT: Record<Locale, SiteContent> = {
           shortName: 'E-commerce, Retail & Logistics',
           title: 'E-commerce, Retail & Logistics',
           markets: 'SPAIN · EU · UNITED STATES · OMNICHANNEL',
+          image: '/images/sector-ecommerce.jpg',
+          imageAlt: 'Clean organized retail and e-commerce fulfillment warehouse with symmetrical steel shelving',
           problemLabel: 'OPERATIONAL DIAGNOSIS',
           problem:
             'Inventory mismatches and overselling across physical stores, web storefronts, and marketplaces; manual shipping label workflows; and wholesale B2B orders trapped in PDFs and phone calls.',
@@ -1069,6 +1107,8 @@ export const CONTENT: Record<Locale, SiteContent> = {
           shortName: 'Field Services & B2B Ops',
           title: 'Home Services & B2B Field Operations',
           markets: 'SPAIN · UNITED STATES · FIELD TEAMS',
+          image: '/images/sector-fieldservices.jpg',
+          imageAlt: 'Commercial field service engineer inspecting modern building systems with a rugged tablet',
           problemLabel: 'OPERATIONAL DIAGNOSIS',
           problem:
             'Paper work orders, multi-day delays issuing quotes and invoices after site visits, and operational blind spots between mobile field technicians and back-office finance.',
@@ -1203,6 +1243,7 @@ export const CONTENT: Record<Locale, SiteContent> = {
       description:
         'A focused 30-minute technical and strategic session to evaluate your operation, scope the right architecture, and align on the optimal engagement model.',
       button: 'Schedule Call',
+      imageAlt: 'Technical architecture desk with blank grid paper, steel ruler, dark slate notebook, and closed laptop',
     },
     footer: {
       summary:
